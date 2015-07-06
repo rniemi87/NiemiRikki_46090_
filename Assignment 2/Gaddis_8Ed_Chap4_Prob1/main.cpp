@@ -1,7 +1,7 @@
 /* 
  * File:   main.cpp
  * Author: Rikki Niemi
- * Purpose: To use conditional operator to fingure out which number is larger
+ * Purpose: To use conditional operator to figure out which number is larger
  * Created on June 29, 2015, 9:03 PM
  */
 
@@ -11,7 +11,7 @@
 //User Libraries
 using namespace std;    //I/O Library
 
-/*//Global COnstants
+/*//Global Constants
  * 
  * //Function Prototypes
  * 
