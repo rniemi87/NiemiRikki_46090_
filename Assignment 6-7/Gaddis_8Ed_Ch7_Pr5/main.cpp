@@ -1,13 +1,14 @@
 /* 
  * File:   main.cpp
  * Author: Rikki Niemi
- * Purpose: To record food eaten by monkeys and average food eaten by a family of monkeys in a 2-D array
- * Created on July 22, 2015, 1:43 PM
+ * Purpose: Rainfall calculator
+ * Created on July 20, 2015, 1:42 PM
  */
 
-//Sysem Libraries
+//System Libraries
 #include <iostream>
 #include <cstdlib>
+#include <cstring>
 
 using namespace std;
 
@@ -17,44 +18,47 @@ using namespace std;
 
 //Function Prototypes
 
-//Execution Starts Here!
+//Execution Starts here!
 int main(int argc, char** argv) {
     //Declare variables
-    int  nMonkey=3;               //Number of rows
-    int nDay=5;               //Number of columns
-    unsigned short toteat=0;              //Total eaten
-    unsigned short highday;             //Day where food is eaten is highest
-    unsigned short lowday;              //Food eaten where food is lowest
-    float avg;                          //Average food eaten
-    unsigned short foodeat;                //Food eaten in lbs.
-    int  monkey;              //Number of monkey
-    int day;                 //Day of week
-    int food[nMonkey][nDay];
+    short month;                        //Month
+    float rainfall;                     //Rainfall amount in inches
+    float totfall;                      //Total rainfall for year
+    float MnthAvg;                      //Monthly average rainfall             
+    unsigned short SIZE=12;             //Size of array
+    float a[SIZE];                      //Array to hold rainfall amounts
+    unsigned short minfall=0;           //Minimum rainfall allowed for a month   '
+    unsigned short hrain;               //High rain in inches
+    string mnthnam;                     //Month name
     
-    //To fill array rows
-    for(monkey=0;monkey<nMonkey;monkey++){
-        
-        
-        for(int day=0;day<nDay;day++){       //To fill array columns
-            cout<<"Enter food eaten by monkey #"<<monkey+1<<" on day #"<<day+1<<endl;
-            cin>>food[monkey][day];
-            
-            //Calculate average total of food eaten by all monkeys
-            toteat+=food[monkey][day];
-            
-            
-            
-            
+    for(int i=0;i<SIZE;i++){
+       cout<<"Enter a positive number for the amount of rainfall for month "<<i+1<<endl;
+       cin>>a[i];
+       
+        if(a[i]<minfall){
+            while(a[i]<minfall){
+             cout<<"Enter a positive number for the amount of rainfall for month "<<i+1<<endl;
+             cin>>a[i];
+         }   
         }
-        
-        
+       if(i==0){
+           hrain=a[i];
+           month=i;   
+       }if(a[i]>hrain){
+           hrain=a[i];
+           month=i;
+       }
+       
+        totfall+=a[i];                  //Calculate total rainfall for year
+      
         
     }
-    avg=toteat/(nMonkey);
+
+    cout<<"Total rainfall = "<<totfall<<endl;
+    cout<<"The month with the highest rain = "<<month+1<<endl;
+    cout<<hrain<<endl;
     
-    cout<<"The average amount of food eaten by the family of monkeys is = "<<avg<<endl;
     
-    //Exit Stage Right!
     return 0;
 }
 
